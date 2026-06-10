@@ -1,5 +1,5 @@
 {
-  "title": "Apache Load Balancing dengan HAProxy menggunakan Metode Least Connection",
+  "title": "Load Balancing dengan HAProxy menggunakan Metode Least Connection",
   "description": "Tutorial setup 3 Apache server dengan HAProxy sebagai load balancer dan Apache JMeter untuk pengujian",
   "details": {
     "intro": {
