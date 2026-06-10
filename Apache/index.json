@@ -1,0 +1,34 @@
+{
+  "title": "Apache Load Balancing dengan HAProxy menggunakan Metode Least Connection",
+  "description": "Tutorial setup 3 Apache server dengan HAProxy sebagai load balancer dan Apache JMeter untuk pengujian",
+  "details": {
+    "intro": {
+      "text": "intro.md"
+    },
+    "steps": [
+      {
+        "title": "Pengenalan Arsitektur",
+        "text": "step1.md"
+      },
+      {
+      "title": "Install Apache Web Server",
+      "text": "step2.md"
+      },
+      {
+      "title": "Konfigurasi Apache",
+      "text": "step3.md"
+      },
+      {
+      "title": "Install dan Konfigurasi HAProxy",
+      "text": "step4.md"
+      },
+      {
+      "title": "Install Apache JMeter dan Pengujian",
+       "text": "step5.md"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  }
+}
