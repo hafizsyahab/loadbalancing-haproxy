@@ -2,18 +2,20 @@
 
 ## Selamat Datang!
 
-Dalam scenario ini kamu akan membangun arsitektur
+Dalam scenario ini akan dibangun sebuah arsitektur
 load balancing menggunakan metode **Least Connection**.
 
 ## Komponen yang Digunakan
 
 | Server | IP | Fungsi |
 |---|---|---|
-| apache1 | 172.30.1.1 | Web Server 1 |
-| apache2 | 172.30.1.2 | Web Server 2 |
-| apache3 | 172.30.1.3 | Web Server 3 |
-| haproxy | 172.30.2.1 | Load Balancer |
-| jmeter  | 172.30.3.1 | Load Testing |
+| Apachejmeter  | 192.168.100.9 | client / Load Testing |
+| haproxy | 192.168.100.10 | Load Balancer |
+| apache1 | 192.168.100.11 | Web Server 1 |
+| apache2 | 192.168.100.12 | Web Server 2 |
+| apache3 | 192.168.100.13 | Web Server 3 |
+
+
 
 ## Apa itu Least Connection?
 HAProxy akan mengarahkan traffic ke server
