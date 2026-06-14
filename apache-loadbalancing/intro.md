@@ -9,11 +9,11 @@ load balancing menggunakan metode **Least Connection**.
 
 | Server | IP | Fungsi |
 |---|---|---|
-| Apachejmeter  | 192.168.100.9 | client / Load Testing |
-| haproxy | 192.168.100.10 | Load Balancer |
-| apache1 | 192.168.100.11 | Web Server 1 |
-| apache2 | 192.168.100.12 | Web Server 2 |
-| apache3 | 192.168.100.13 | Web Server 3 |
+| Apache JMeter  | 192.168.100.9 | client / Load Testing |
+| HAProxy | 192.168.100.10 | Load Balancer |
+| Apache1 | 192.168.100.11 | Web Server 1 |
+| Apache2 | 192.168.100.12 | Web Server 2 |
+| Apache3 | 192.168.100.13 | Web Server 3 |
 
 
 
