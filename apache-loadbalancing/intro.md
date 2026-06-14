@@ -7,7 +7,7 @@ load balancing menggunakan metode **Least Connection**.
 
 # Arsitektur Setup
 
-![Topologi Jaringan](apache-loadbalancing/images/Topologi.png)
+![Topologi Jaringan](Topologi.png)
 
 ## Komponen yang Digunakan
 
