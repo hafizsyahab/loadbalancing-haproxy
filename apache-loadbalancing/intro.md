@@ -5,6 +5,10 @@
 Dalam scenario ini akan dibangun sebuah arsitektur sederahana
 load balancing menggunakan metode **Least Connection**.
 
+# Arsitektur Setup
+
+![Topologi Jaringan](images/Topolog 2.png)
+
 ## Komponen yang Digunakan
 
 | Server | IP | Fungsi |
