@@ -2,7 +2,7 @@
 
 ## Selamat Datang!
 
-Dalam scenario ini akan dibangun sebuah arsitektur
+Dalam scenario ini akan dibangun sebuah arsitektur sederahana
 load balancing menggunakan metode **Least Connection**.
 
 ## Komponen yang Digunakan
@@ -19,7 +19,7 @@ load balancing menggunakan metode **Least Connection**.
 
 ## Apa itu Least Connection?
 HAProxy akan mengarahkan traffic ke server
-yang paling sedikit koneksi aktifnya.
+yang memliki koneksi aktif paling.
 
 ## Prasyarat
 Semua sudah disiapkan otomatis!
