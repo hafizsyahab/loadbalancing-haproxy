@@ -1,48 +1,39 @@
 # Architecture Overview
 
-## What is Least Connection?
-HAProxy directs traffic to the server 
-with the **least number of active connections**.
+In this scenario we have 5 nodes:
+- **apache1, apache2, apache3** → Web Servers
+- **haproxy** → Load Balancer
+- **jmeter** → Load Testing Client
 
-## Architecture Diagram
+## How Least Connection Works
 
-![Network Topology](topologi.png)
-
-## Network Configuration Comparison
-
-| Platform | IP Configuration |
-|---|---|
-| VM (VirtualBox/VMware) | Manual via Netplan |
-| Killercoda | Automatic per node |
-| AWS | Elastic IP / VPC |
-| Azure | Virtual Network (VNet) |
-| GCP | VPC Network |
-
-## On Real VM (VirtualBox)
-Static IP is configured manually using netplan:
-
-```bash
-sudo nano /etc/netplan/01-network-manager-all.yaml
+```
+Client Request
+      ↓
+   HAProxy
+   ↓  ↓  ↓
+ apache1 apache2 apache3
+(2 conn)(1 conn)(3 conn)
+      ↓
+HAProxy picks apache2
+(least connections!)
 ```
 
-Then apply:
+## Network Configuration
 
+| Platform | How IP is Set |
+|---|---|
+| VM (thesis) | Manual via Netplan |
+| Killercoda | Auto per node |
+| AWS | VPC / Elastic IP |
+| Azure | VNet |
+| GCP | VPC Network |
+
+## On Real VM
 ```bash
+sudo nano /etc/netplan/01-network-manager-all.yaml
 sudo netplan apply
 ```
 
-## On AWS
-IP is assigned automatically via VPC
-or manually set via Elastic IP in console.
-
-## On This Killercoda Scenario
-No IP configuration needed!
-Each node already has its own IP:
-
-| Node | Function |
-|---|---|
-| apache1 | Web Server 1 |
-| apache2 | Web Server 2 |
-| apache3 | Web Server 3 |
-| haproxy | Load Balancer |
-| jmeter  | Load Testing |
+## On Killercoda
+No configuration needed — nodes connect automatically!
