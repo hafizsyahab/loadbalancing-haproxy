@@ -2,7 +2,7 @@
 
 ## What Are We Building?
 
-In this scenario, we will build a load balancing 
+In this scenario, we will build a load balancing
 architecture with **5 nodes**:
 
 ```
@@ -11,7 +11,6 @@ Client (JMeter)
    HAProxy (Load Balancer)
    ↓        ↓        ↓
 apache1   apache2   apache3
-(Web Server 1) (Web Server 2) (Web Server 3)
 ```
 
 ## Components
@@ -24,27 +23,34 @@ apache1   apache2   apache3
 | haproxy | Load Balancer |
 | jmeter | Load Testing Client |
 
-## How Least Connection Works
+## Load Balancing Methods
 
-HAProxy checks active connections on each server
-and sends new requests to the server with 
-the **fewest active connections**:
+### Least Connection
+Least Connection is a dynamic load balancing algorithm
+that checks which server has the fewest active connections
+and sends the request to that server.
+This method is well-suited for servers that often have
+varying connection times. It also provides stable
+performance on systems with unpredictable traffic.
 
-```
-New Request comes in...
+### Round Robin
+Round Robin distributes requests to each server
+in a fixed rotation. After the last server receives
+a request, distribution returns to the first server.
+This method is simple and works best when all servers
+have relatively equal capacity.
 
-apache1 → 5 active connections
-apache2 → 2 active connections  ← picked!
-apache3 → 4 active connections
-```
+### IP Hash
+IP Hash determines the target server based on
+a hash of the client's IP address. Users with
+the same IP will always be directed to the same server.
+This method is useful for session persistence
+since users won't be moved to another server
+as long as their IP doesn't change.
 
-## Why Least Connection?
+## Why We Use Least Connection
 
-| Method | Description |
-|---|---|
-| Round Robin | Requests distributed in rotation |
-| Least Connection | Request goes to least busy server |
-| IP Hash | Same IP always goes to same server |
-
-Least Connection is best when requests 
-have **different processing times**!
+In this scenario, we use **Least Connection** because:
+- Each request may have different processing times
+- Traffic load is unpredictable
+- We need stable and efficient performance
