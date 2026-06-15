@@ -1,29 +1,28 @@
-# Analisa Load Balancing Menggunakan Metode Least Connection
+# Load Balancing Analysis Using Least Connection Method
 
-## Selamat Datang!
+## Welcome!
+In this scenario, we will build a simple load balancing
+architecture using the **Least Connection** method.
 
-Dalam scenario ini akan dibangun sebuah arsitektur sederahana
-load balancing menggunakan metode **Least Connection**.
+# Architecture Setup
 
-# Arsitektur Setup
+[Network Topology](Topologi.png)
 
-![Topologi Jaringan](Topologi.png)
+## Components Used
 
-## Komponen yang Digunakan
-
-| Server | IP | Fungsi |
+| Server | IP | Function |
 |---|---|---|
-| Apache JMeter  | 192.168.100.9 | client / Load Testing |
+| Apache JMeter | 192.168.100.9 | Client / Load Testing |
 | HAProxy | 192.168.100.10 | Load Balancer |
 | Apache1 | 192.168.100.11 | Web Server 1 |
 | Apache2 | 192.168.100.12 | Web Server 2 |
 | Apache3 | 192.168.100.13 | Web Server 3 |
 
+## What is Least Connection?
+HAProxy will direct traffic to the server
+that has the **least number of active connections**.
 
-
-## Apa itu Least Connection?
-HAProxy akan mengarahkan traffic ke server
-yang memliki koneksi aktif paling.
-
-## Prasyarat
-Semua sudah disiapkan otomatis!
+## Prerequisites
+- Basic knowledge of Linux commands
+- Basic understanding of web servers
+- No installation required — everything is set up automatically!
