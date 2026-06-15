@@ -1,48 +1,50 @@
-# How Least Connection Works
+# Architecture Overview
 
-When a request comes in, HAProxy checks 
-active connections on each server:
+## What Are We Building?
+
+In this scenario, we will build a load balancing 
+architecture with **5 nodes**:
 
 ```
-Client Request
+Client (JMeter)
       ↓
-   HAProxy
-   ↓     ↓     ↓
-apache1 apache2 apache3
-2 conn  1 conn  3 conn
-      ↓
-HAProxy picks apache2
-(least active connections!)
+   HAProxy (Load Balancer)
+   ↓        ↓        ↓
+apache1   apache2   apache3
+(Web Server 1) (Web Server 2) (Web Server 3)
+```
+
+## Components
+
+| Node | Function |
+|---|---|
+| apache1 | Web Server 1 |
+| apache2 | Web Server 2 |
+| apache3 | Web Server 3 |
+| haproxy | Load Balancer |
+| jmeter | Load Testing Client |
+
+## How Least Connection Works
+
+HAProxy checks active connections on each server
+and sends new requests to the server with 
+the **fewest active connections**:
+
+```
+New Request comes in...
+
+apache1 → 5 active connections
+apache2 → 2 active connections  ← picked!
+apache3 → 4 active connections
 ```
 
 ## Why Least Connection?
 
-| Method | How it Works |
+| Method | Description |
 |---|---|
 | Round Robin | Requests distributed in rotation |
-| Least Connection | Request sent to server with fewest active connections |
-| IP Hash | Requests from same IP always go to same server |
+| Least Connection | Request goes to least busy server |
+| IP Hash | Same IP always goes to same server |
 
-Least Connection is more efficient because
-it considers the actual load on each server,
-not just the number of requests!
-
-## Network Configuration
-
-| Platform | How IP is Set |
-|---|---|
-| VM (thesis) | Manual via Netplan |
-| Killercoda | Automatic per node |
-| AWS | VPC / Elastic IP |
-| Azure | Virtual Network |
-| GCP | VPC Network |
-
-## On Real VM
-```bash
-sudo nano /etc/netplan/01-network-manager-all.yaml
-sudo netplan apply
-```
-
-## On Killercoda
-No configuration needed!
-Nodes connect to each other automatically.
+Least Connection is best when requests 
+have **different processing times**!
