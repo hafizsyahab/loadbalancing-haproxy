@@ -1,32 +1,40 @@
-# Architecture Overview
+# How Least Connection Works
 
-In this scenario we have 5 nodes:
-- **apache1, apache2, apache3** → Web Servers
-- **haproxy** → Load Balancer
-- **jmeter** → Load Testing Client
-
-## How Least Connection Works
+When a request comes in, HAProxy checks 
+active connections on each server:
 
 ```
 Client Request
       ↓
    HAProxy
-   ↓  ↓  ↓
- apache1 apache2 apache3
-(2 conn)(1 conn)(3 conn)
+   ↓     ↓     ↓
+apache1 apache2 apache3
+2 conn  1 conn  3 conn
       ↓
 HAProxy picks apache2
-(least connections!)
+(least active connections!)
 ```
+
+## Why Least Connection?
+
+| Method | How it Works |
+|---|---|
+| Round Robin | Requests distributed in rotation |
+| Least Connection | Request sent to server with fewest active connections |
+| IP Hash | Requests from same IP always go to same server |
+
+Least Connection is more efficient because
+it considers the actual load on each server,
+not just the number of requests!
 
 ## Network Configuration
 
 | Platform | How IP is Set |
 |---|---|
 | VM (thesis) | Manual via Netplan |
-| Killercoda | Auto per node |
+| Killercoda | Automatic per node |
 | AWS | VPC / Elastic IP |
-| Azure | VNet |
+| Azure | Virtual Network |
 | GCP | VPC Network |
 
 ## On Real VM
@@ -36,4 +44,5 @@ sudo netplan apply
 ```
 
 ## On Killercoda
-No configuration needed — nodes connect automatically!
+No configuration needed!
+Nodes connect to each other automatically.
