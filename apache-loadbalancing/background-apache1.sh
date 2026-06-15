@@ -1,6 +1,17 @@
 #!/bin/bash
 apt-get update -y
 apt-get install -y apache2
-echo "<h1>Apache Web Server 1 - 192.168.100.11</h1>" > /var/www/html/index.html
+
+cat > /var/www/html/index.html << 'EOF'
+<html>
+  <head>
+    <title>Web Server 1</title>
+  </head>
+  <body>
+    <h1>webserver1 dijalankan</h1>
+  </body>
+</html>
+EOF
+
 systemctl start apache2
 systemctl enable apache2
