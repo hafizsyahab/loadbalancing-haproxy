@@ -1,6 +1,28 @@
 {
   "title": "Load Balancing with HAProxy using Least Connection Method",
   "description": "Tutorial to setup 3 Apache servers with HAProxy as load balancer and Apache JMeter for testing",
+  "backend": {
+    "imageid": "ubuntu"
+  },
+  "environment": {
+    "nodes": [
+      {
+        "name": "apache1"
+      },
+      {
+        "name": "apache2"
+      },
+      {
+        "name": "apache3"
+      },
+      {
+        "name": "haproxy"
+      },
+      {
+        "name": "jmeter"
+      }
+    ]
+  },
   "details": {
     "intro": {
       "text": "intro.md"
