@@ -6,7 +6,7 @@ architecture using the **Least Connection** method.
 
 # Architecture Setup
 
-[Network Topology](Topologi.png)
+![Network Topology](Topologi.png)
 
 ## Components Used
 
